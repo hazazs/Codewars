@@ -47,9 +47,6 @@ public class Codewars {
         }
         return Integer.parseInt(builder.toString());
     }
-    public static BigInteger easyLine(int n) {
-        return new BigInteger(String.valueOf(Math.pow(2, n)));
-    }
     
     /*
     Ones and Zeros
