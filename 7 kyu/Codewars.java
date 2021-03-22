@@ -1,5 +1,7 @@
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Codewars {
 
@@ -44,6 +46,18 @@ public class Codewars {
             n /= 10;
         }
         return Integer.parseInt(builder.toString());
+    }
+    public static BigInteger easyLine(int n) {
+        return new BigInteger(String.valueOf(Math.pow(2, n)));
+    }
+    
+    /*
+    Ones and Zeros
+     */
+    public static int ConvertBinaryArrayToInt(List<Integer> binary) {
+        return IntStream.range(0, binary.size())
+                        .map(i -> binary.get(i) * (int) Math.pow(2, binary.size()-i-1))
+                        .sum();
     }
     
 }
