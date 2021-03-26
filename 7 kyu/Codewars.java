@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -14,6 +15,7 @@ public class Codewars {
         }
         return words.subList(0, i);
     }
+    
     public static boolean isValidWord(List<String> w, int i) {
         return !w.get(i).isEmpty() && (i == 0 || w.get(i - 1).endsWith(String.valueOf(w.get(i).charAt(0))));
     }
@@ -54,6 +56,24 @@ public class Codewars {
         return IntStream.range(0, binary.size())
                         .map(i -> binary.get(i) * (int) Math.pow(2, binary.size()-i-1))
                         .sum();
+    }
+    
+    /*
+    Easy Line
+     */
+    public static BigInteger easyLine(int n) {
+        return IntStream.range(0, n+1)
+                        .mapToObj(k -> nChooseK(n, k).pow(2))
+                        .reduce(BigInteger::add)
+                        .get();
+    }
+    
+    public static BigInteger nChooseK(int n, int k) {
+        return fact(n).divide(fact(k).multiply(fact(n-k)));
+    }
+  
+    public static BigInteger fact(int n) {
+        return n < 2 ? BigInteger.ONE : BigInteger.valueOf(n).multiply(fact(n-1));
     }
     
 }
