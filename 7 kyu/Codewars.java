@@ -76,4 +76,11 @@ public class Codewars {
         return n < 2 ? BigInteger.ONE : BigInteger.valueOf(n).multiply(fact(n-1));
     }
     
+    /*
+    Reverse a Number
+     */
+    public static int reverse(int number) {
+	return Integer.signum(number) * Integer.parseInt(new StringBuilder(0).append(Math.abs(number)).reverse().toString());
+    }
+    
 }
