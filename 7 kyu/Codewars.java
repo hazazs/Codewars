@@ -2,6 +2,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 public class Codewars {
 
@@ -81,6 +82,15 @@ public class Codewars {
      */
     public static int reverse(int number) {
 	return Integer.signum(number) * Integer.parseInt(new StringBuilder(0).append(Math.abs(number)).reverse().toString());
+    }
+    
+    /*
+    Count the divisors of a number
+     */
+    public long numberOfDivisors(int n) {
+        return Long.signum(n) + LongStream.rangeClosed(1, n/2)
+                                          .filter(i -> n%i == 0)
+                                          .count();
     }
     
 }
