@@ -93,4 +93,11 @@ public class Codewars {
                                           .count();
     }
     
+    /*
+    Bumps in the Road
+     */
+    public static String bumps(final String road) {
+        return road.chars().filter(i -> i == 110).count() > 15 ? "Car Dead" : "Woohoo!";
+    }
+    
 }
