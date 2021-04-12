@@ -1,6 +1,8 @@
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
@@ -98,6 +100,16 @@ public class Codewars {
      */
     public static String bumps(final String road) {
         return road.chars().filter(i -> i == 110).count() > 15 ? "Car Dead" : "Woohoo!";
+    }
+    
+    /*
+    Disemvowel Trolls
+     */
+    public static String disemvowel(String str) {
+        return str.codePoints()
+                  .filter(i -> !Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U').contains((char) i))
+                  .mapToObj(i -> String.valueOf((char) i))
+                  .collect(Collectors.joining());
     }
     
 }
