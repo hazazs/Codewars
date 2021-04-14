@@ -112,4 +112,14 @@ public class Codewars {
                   .collect(Collectors.joining());
     }
     
+    /*
+    Speed Control
+     */
+    public static int gps(int s, double[] x) {
+        return IntStream.range(0, x.length-1)
+                        .map(i -> (int) (3600*(x[i+1]-x[i])/s))
+                        .max()
+                        .orElse(0);
+    }
+    
 }
