@@ -122,4 +122,28 @@ public class Codewars {
                         .orElse(0);
     }
     
+    /*
+    Switcheroo
+     */
+    public static String switcheroo(String x) {
+        return x.codePoints()
+                .mapToObj(i -> i == 'a' ? "b" : (i == 'b' ? "a" : "c"))
+                .collect(Collectors.joining());
+    }
+    
+    /*
+    Harvest Festival
+     */
+    public static String plant(char seed, int water, int fert, int temp) {
+        StringBuilder plant = new StringBuilder(2);
+        for (int cluster = 0; cluster < water; cluster++) {
+            for (int stem = 0; stem < water; stem++)
+                plant.append("-");
+            if (temp >= 20 && temp <= 30)
+                for (int flower = 0; flower < fert; flower++)
+                    plant.append(seed);
+        }
+        return temp < 20 || temp > 30 ? plant.append(seed).toString() : plant.toString();
+    }
+    
 }
