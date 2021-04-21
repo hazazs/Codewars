@@ -146,4 +146,34 @@ public class Codewars {
         return temp < 20 || temp > 30 ? plant.append(seed).toString() : plant.toString();
     }
     
+    /*
+    All Star Code Challenge #22
+     */
+    public static String toTime(int seconds){
+        int hours = seconds / 3600;
+        int minutes = (seconds - hours * 3600) / 60;
+        return hours + " hour(s) and " + minutes + " minute(s)";
+    }
+    
+    /*
+    Small enough? - Beginner
+     */
+    public static boolean smallEnough(int[] a, int limit) {
+        return IntStream.of(a).allMatch(i -> i <= limit);
+    }
+    
+    /*
+    Robinson Crusoe
+     */
+    public static double[] crusoe(int n, double d, double ang, double distmult, double angmult) {
+        double[] coor = new double[2];
+        for (int i = 0; i < n; i++) {
+          coor[0] += d * Math.cos(Math.toRadians(ang));
+          coor[1] += d * Math.sin(Math.toRadians(ang));
+          d *= distmult;
+          ang *= angmult;
+        }
+        return coor;
+    }
+    
 }
