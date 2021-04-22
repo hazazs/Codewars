@@ -18,7 +18,7 @@ public class Codewars {
         }
         return words.subList(0, i);
     }
-    
+
     public static boolean isValidWord(List<String> w, int i) {
         return !w.get(i).isEmpty() && (i == 0 || w.get(i - 1).endsWith(String.valueOf(w.get(i).charAt(0))));
     }
@@ -46,82 +46,82 @@ public class Codewars {
     public int squareDigits(int n) {
         StringBuilder builder = new StringBuilder(String.valueOf(n).length());
         while (n != 0) {
-            builder.insert(0, Math.round(Math.pow(n%10, 2)));
+            builder.insert(0, Math.round(Math.pow(n % 10, 2)));
             n /= 10;
         }
         return Integer.parseInt(builder.toString());
     }
-    
+
     /*
     Ones and Zeros
      */
     public static int ConvertBinaryArrayToInt(List<Integer> binary) {
         return IntStream.range(0, binary.size())
-                        .map(i -> binary.get(i) * (int) Math.pow(2, binary.size()-i-1))
-                        .sum();
+                .map(i -> binary.get(i) * (int) Math.pow(2, binary.size() - i - 1))
+                .sum();
     }
-    
+
     /*
     Easy Line
      */
     public static BigInteger easyLine(int n) {
-        return IntStream.range(0, n+1)
-                        .mapToObj(k -> nChooseK(n, k).pow(2))
-                        .reduce(BigInteger::add)
-                        .get();
+        return IntStream.range(0, n + 1)
+                .mapToObj(k -> nChooseK(n, k).pow(2))
+                .reduce(BigInteger::add)
+                .get();
     }
-    
+
     public static BigInteger nChooseK(int n, int k) {
-        return fact(n).divide(fact(k).multiply(fact(n-k)));
+        return fact(n).divide(fact(k).multiply(fact(n - k)));
     }
-  
+
     public static BigInteger fact(int n) {
-        return n < 2 ? BigInteger.ONE : BigInteger.valueOf(n).multiply(fact(n-1));
+        return n < 2 ? BigInteger.ONE : BigInteger.valueOf(n).multiply(fact(n - 1));
     }
-    
+
     /*
     Reverse a Number
      */
     public static int reverse(int number) {
-	return Integer.signum(number) * Integer.parseInt(new StringBuilder(0).append(Math.abs(number)).reverse().toString());
+        return Integer.signum(number) * Integer.parseInt(new StringBuilder(0).append(Math.abs(number)).reverse().toString());
     }
-    
+
     /*
     Count the divisors of a number
      */
     public long numberOfDivisors(int n) {
-        return Long.signum(n) + LongStream.rangeClosed(1, n/2)
-                                          .filter(i -> n%i == 0)
-                                          .count();
+        return Long.signum(n) + LongStream.rangeClosed(1, n / 2)
+                .filter(i -> n % i == 0)
+                .count();
     }
-    
+
     /*
     Bumps in the Road
      */
     public static String bumps(final String road) {
         return road.chars().filter(i -> i == 110).count() > 15 ? "Car Dead" : "Woohoo!";
     }
-    
+
     /*
     Disemvowel Trolls
      */
     public static String disemvowel(String str) {
         return str.codePoints()
-                  .filter(i -> !Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U').contains((char) i))
-                  .mapToObj(i -> String.valueOf((char) i))
-                  .collect(Collectors.joining());
+                .filter(i -> !Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U').contains((char) i))
+                .mapToObj(i -> String.valueOf((char) i))
+                .collect(Collectors.joining());
     }
-    
+
     /*
     Speed Control
      */
     public static int gps(int s, double[] x) {
-        return IntStream.range(0, x.length-1)
-                        .map(i -> (int) (3600*(x[i+1]-x[i])/s))
-                        .max()
-                        .orElse(0);
+        return IntStream.range(0, x.length - 1)
+                .map(i -> (int) (3600 * (x[i + 1] - x[i]) / s))
+                .max()
+                .orElse(0);
     }
-    
+
     /*
     Switcheroo
      */
@@ -130,7 +130,7 @@ public class Codewars {
                 .mapToObj(i -> i == 'a' ? "b" : (i == 'b' ? "a" : "c"))
                 .collect(Collectors.joining());
     }
-    
+
     /*
     Harvest Festival
      */
@@ -145,35 +145,35 @@ public class Codewars {
         }
         return temp < 20 || temp > 30 ? plant.append(seed).toString() : plant.toString();
     }
-    
+
     /*
     All Star Code Challenge #22
      */
-    public static String toTime(int seconds){
+    public static String toTime(int seconds) {
         int hours = seconds / 3600;
         int minutes = (seconds - hours * 3600) / 60;
         return hours + " hour(s) and " + minutes + " minute(s)";
     }
-    
+
     /*
     Small enough? - Beginner
      */
     public static boolean smallEnough(int[] a, int limit) {
         return IntStream.of(a).allMatch(i -> i <= limit);
     }
-    
+
     /*
     Robinson Crusoe
      */
     public static double[] crusoe(int n, double d, double ang, double distmult, double angmult) {
         double[] coor = new double[2];
         for (int i = 0; i < n; i++) {
-          coor[0] += d * Math.cos(Math.toRadians(ang));
-          coor[1] += d * Math.sin(Math.toRadians(ang));
-          d *= distmult;
-          ang *= angmult;
+            coor[0] += d * Math.cos(Math.toRadians(ang));
+            coor[1] += d * Math.sin(Math.toRadians(ang));
+            d *= distmult;
+            ang *= angmult;
         }
         return coor;
     }
-    
+
 }
