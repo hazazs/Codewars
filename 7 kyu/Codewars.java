@@ -35,8 +35,9 @@ public class Codewars {
         }
         list.sort((num1, num2) -> Integer.compare(num1, num2));
         int max = 0;
-        for (int i = 0; i < list.size(); i++)
+        for (int i = 0; i < list.size(); i++) {
             max += list.get(i) * Math.pow(10, i);
+        }
         return max;
     }
 
@@ -137,11 +138,14 @@ public class Codewars {
     public static String plant(char seed, int water, int fert, int temp) {
         StringBuilder plant = new StringBuilder(2);
         for (int cluster = 0; cluster < water; cluster++) {
-            for (int stem = 0; stem < water; stem++)
+            for (int stem = 0; stem < water; stem++) {
                 plant.append("-");
-            if (temp >= 20 && temp <= 30)
-                for (int flower = 0; flower < fert; flower++)
+            }
+            if (temp >= 20 && temp <= 30) {
+                for (int flower = 0; flower < fert; flower++) {
                     plant.append(seed);
+                }
+            }
         }
         return temp < 20 || temp > 30 ? plant.append(seed).toString() : plant.toString();
     }
@@ -181,10 +185,11 @@ public class Codewars {
      */
     public static int nbDig(int n, int d) {
         int count = 0;
-        for (int i = 0; i <= n; i++)
+        for (int i = 0; i <= n; i++) {
             count += String.valueOf(i * i).codePoints()
                     .filter(ch -> ch == Character.forDigit(d, 10))
                     .count();
+        }
         return count;
     }
 
