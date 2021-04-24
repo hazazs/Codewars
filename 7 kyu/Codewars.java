@@ -193,4 +193,14 @@ public class Codewars {
         return count;
     }
 
+    /*
+    Mumbling
+     */
+    public static String accum(String s) {
+        return IntStream.range(0, s.length())
+                .mapToObj(i -> s.substring(i, i + 1).repeat(i + 1))
+                .map(str -> str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase())
+                .collect(Collectors.joining("-"));
+    }
+    
 }
