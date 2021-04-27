@@ -1,7 +1,6 @@
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
@@ -204,7 +203,7 @@ public class Codewars {
                 .map(str -> str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase())
                 .collect(Collectors.joining("-"));
     }
-    
+
     /*
     Moves in squared strings (I)
      */
@@ -213,13 +212,13 @@ public class Codewars {
                 .map(str -> new StringBuilder(str).reverse().toString())
                 .collect(Collectors.joining("\n"));
     }
-    
+
     public static String horMirror(String strng) {
         return Arrays.stream(strng.split("\n"))
                 .sorted((str1, str2) -> -1)
                 .collect(Collectors.joining("\n"));
     }
-    
+
     public static String oper(UnaryOperator<String> operator, String s) {
         return operator.apply(s);
     }
