@@ -229,11 +229,11 @@ public class Codewars {
      */
     public static String highAndLow(String numbers) {
         List<Integer> list = Arrays.stream(numbers.split(" "))
-                .mapToInt(str -> Integer.parseInt(str))
+                .mapToInt(Integer::parseInt)
                 .boxed()
                 .sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList());
-        return list.get(0) + " " + list.get(list.size() - 1);
+        return String.format("%d %d", list.get(0), list.get(list.size() - 1));
     }
 
 }
