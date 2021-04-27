@@ -1,6 +1,7 @@
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
@@ -221,6 +222,18 @@ public class Codewars {
 
     public static String oper(UnaryOperator<String> operator, String s) {
         return operator.apply(s);
+    }
+    
+    /*
+    Highest and Lowest
+     */
+    public static String highAndLow(String numbers) {
+        List<Integer> list = Arrays.stream(numbers.split(" "))
+                .mapToInt(str -> Integer.parseInt(str))
+                .boxed()
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+        return list.get(0) + " " + list.get(list.size() - 1);
     }
 
 }
