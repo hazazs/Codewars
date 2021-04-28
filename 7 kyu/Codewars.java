@@ -235,5 +235,14 @@ public class Codewars {
                 .collect(Collectors.toList());
         return String.format("%d %d", list.get(0), list.get(list.size() - 1));
     }
+    
+    /*
+    Vowel Count
+     */
+    public static int getCount(String str) {
+        return (int) str.codePoints()
+                .filter(i -> List.of('a', 'e', 'i', 'o', 'u').contains((char) i))
+                .count();
+    }
 
 }
