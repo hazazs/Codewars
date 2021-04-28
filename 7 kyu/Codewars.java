@@ -2,7 +2,9 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -243,6 +245,15 @@ public class Codewars {
         return (int) str.codePoints()
                 .filter(i -> List.of('a', 'e', 'i', 'o', 'u').contains((char) i))
                 .count();
+    }
+    
+    /*
+    Isograms
+     */
+    public static boolean  isIsogram(String str) {
+        return str.toLowerCase().codePoints()
+                .collect(HashSet::new, Set::add, Set::addAll)
+                .size() == str.length();
     }
 
 }
