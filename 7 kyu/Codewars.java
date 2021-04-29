@@ -250,7 +250,7 @@ public class Codewars {
     /*
     Isograms
      */
-    public static boolean  isIsogram(String str) {
+    public static boolean isIsogram(String str) {
         return str.toLowerCase().codePoints()
                 .collect(HashSet::new, Set::add, Set::addAll)
                 .size() == str.length();
