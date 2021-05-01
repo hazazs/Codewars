@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -5,6 +6,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -256,4 +258,18 @@ public class Codewars {
                 .size() == str.length();
     }
 
+    /*
+    Map over a list of lists
+     */
+    public static <T,R> R[][] gridMap(Function<T,R> fn, T[][] list) {
+        R[][] R = (R[][]) Array.newInstance(list.getClass().getComponentType(), list.length);
+        for (int i = 0; i < list.length; i++) {
+            R[i] = (R[]) Array.newInstance(list[i].getClass().getComponentType(), list[i].length);
+            for (int j = 0; j < list[i].length; j++) {
+                R[i][j] = fn.apply(list[i][j]);
+            }
+        }
+        return R;
+    }
+    
 }
