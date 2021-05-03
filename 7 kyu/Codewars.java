@@ -272,4 +272,43 @@ public class Codewars {
         return R;
     }
     
+    /*
+    Get the Middle Character
+     */
+    public static String getMiddle(String word) {
+        if (word.length() % 2 == 0) {
+            return word.substring(word.length() / 2 - 1, word.length() / 2 + 1);
+        }
+        return String.valueOf(word.charAt(word.length() / 2));
+    }
+    
+    /*
+    You're a square!
+     */
+    public static boolean isSquare(int n) {
+        return Math.round(Math.sqrt(n)) == Math.sqrt(n);
+    }
+    
+    /*
+    Shortest Word
+     */
+    public static int findShort(String s) {
+        return Arrays.stream(s.split(" "))
+                .min((s1, s2) -> Integer.compare(s1.length(), s2.length()))
+                .get()
+                .length();
+    }
+    
+    /*
+    Jaden Casing Strings
+     */
+    public String toJadenCase(String phrase) {
+  	if (phrase == null || phrase.isEmpty()) {
+            return null;
+        }
+  	return Arrays.stream(phrase.split(" "))
+                .map(s -> s.substring(0, 1).toUpperCase().concat(s.substring(1)))
+                .collect(Collectors.joining(" "));
+    }
+    
 }
