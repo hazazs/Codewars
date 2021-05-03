@@ -227,7 +227,7 @@ public class Codewars {
     public static String oper(UnaryOperator<String> operator, String s) {
         return operator.apply(s);
     }
-    
+
     /*
     Highest and Lowest
      */
@@ -239,7 +239,7 @@ public class Codewars {
                 .collect(Collectors.toList());
         return String.format("%d %d", list.get(0), list.get(list.size() - 1));
     }
-    
+
     /*
     Vowel Count
      */
@@ -248,7 +248,7 @@ public class Codewars {
                 .filter(i -> List.of('a', 'e', 'i', 'o', 'u').contains((char) i))
                 .count();
     }
-    
+
     /*
     Isograms
      */
@@ -261,7 +261,7 @@ public class Codewars {
     /*
     Map over a list of lists
      */
-    public static <T,R> R[][] gridMap(Function<T,R> fn, T[][] list) {
+    public static <T, R> R[][] gridMap(Function<T, R> fn, T[][] list) {
         R[][] R = (R[][]) Array.newInstance(list.getClass().getComponentType(), list.length);
         for (int i = 0; i < list.length; i++) {
             R[i] = (R[]) Array.newInstance(list[i].getClass().getComponentType(), list[i].length);
@@ -271,7 +271,7 @@ public class Codewars {
         }
         return R;
     }
-    
+
     /*
     Get the Middle Character
      */
@@ -281,14 +281,14 @@ public class Codewars {
         }
         return String.valueOf(word.charAt(word.length() / 2));
     }
-    
+
     /*
     You're a square!
      */
     public static boolean isSquare(int n) {
         return Math.round(Math.sqrt(n)) == Math.sqrt(n);
     }
-    
+
     /*
     Shortest Word
      */
@@ -298,17 +298,17 @@ public class Codewars {
                 .get()
                 .length();
     }
-    
+
     /*
     Jaden Casing Strings
      */
     public String toJadenCase(String phrase) {
-  	if (phrase == null || phrase.isEmpty()) {
+        if (phrase == null || phrase.isEmpty()) {
             return null;
         }
-  	return Arrays.stream(phrase.split(" "))
+        return Arrays.stream(phrase.split(" "))
                 .map(s -> s.substring(0, 1).toUpperCase().concat(s.substring(1)))
                 .collect(Collectors.joining(" "));
     }
-    
+
 }
