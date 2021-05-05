@@ -340,5 +340,14 @@ public class Codewars {
         }
         return '\u0000';
     }
+    
+    /*
+    Beginner Series #3 Sum of Numbers
+     */
+    public int GetSum(int a, int b) {
+        return IntStream
+            .rangeClosed(Math.min(a, b), Math.max(a, b))
+            .sum();
+    }
 
 }
