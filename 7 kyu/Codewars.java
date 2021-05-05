@@ -63,7 +63,8 @@ public class Codewars {
     Ones and Zeros
      */
     public static int ConvertBinaryArrayToInt(List<Integer> binary) {
-        return IntStream.range(0, binary.size())
+        return IntStream
+                .range(0, binary.size())
                 .map(i -> binary.get(i) * (int) Math.pow(2, binary.size() - i - 1))
                 .sum();
     }
@@ -72,7 +73,8 @@ public class Codewars {
     Easy Line
      */
     public static BigInteger easyLine(int n) {
-        return IntStream.range(0, n + 1)
+        return IntStream
+                .range(0, n + 1)
                 .mapToObj(k -> nChooseK(n, k).pow(2))
                 .reduce(BigInteger::add)
                 .get();
@@ -97,9 +99,10 @@ public class Codewars {
     Count the divisors of a number
      */
     public long numberOfDivisors(int n) {
-        return Long.signum(n) + LongStream.rangeClosed(1, n / 2)
-                .filter(i -> n % i == 0)
-                .count();
+        return Long.signum(n) + LongStream
+                                    .rangeClosed(1, n / 2)
+                                    .filter(i -> n % i == 0)
+                                    .count();
     }
 
     /*
@@ -123,7 +126,8 @@ public class Codewars {
     Speed Control
      */
     public static int gps(int s, double[] x) {
-        return IntStream.range(0, x.length - 1)
+        return IntStream
+                .range(0, x.length - 1)
                 .map(i -> (int) (3600 * (x[i + 1] - x[i]) / s))
                 .max()
                 .orElse(0);
@@ -193,8 +197,8 @@ public class Codewars {
         int count = 0;
         for (int i = 0; i <= n; i++) {
             count += String.valueOf(i * i).codePoints()
-                    .filter(ch -> ch == Character.forDigit(d, 10))
-                    .count();
+                        .filter(ch -> ch == Character.forDigit(d, 10))
+                        .count();
         }
         return count;
     }
@@ -203,7 +207,8 @@ public class Codewars {
     Mumbling
      */
     public static String accum(String s) {
-        return IntStream.range(0, s.length())
+        return IntStream
+                .range(0, s.length())
                 .mapToObj(i -> s.substring(i, i + 1).repeat(i + 1))
                 .map(str -> str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase())
                 .collect(Collectors.joining("-"));
@@ -233,10 +238,10 @@ public class Codewars {
      */
     public static String highAndLow(String numbers) {
         List<Integer> list = Arrays.stream(numbers.split(" "))
-                .mapToInt(Integer::parseInt)
-                .boxed()
-                .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
+                                .mapToInt(Integer::parseInt)
+                                .boxed()
+                                .sorted(Comparator.reverseOrder())
+                                .collect(Collectors.toList());
         return String.format("%d %d", list.get(0), list.get(list.size() - 1));
     }
 
@@ -245,8 +250,8 @@ public class Codewars {
      */
     public static int getCount(String str) {
         return (int) str.codePoints()
-                .filter(i -> List.of('a', 'e', 'i', 'o', 'u').contains((char) i))
-                .count();
+                        .filter(i -> List.of('a', 'e', 'i', 'o', 'u').contains((char) i))
+                        .count();
     }
 
     /*
@@ -340,14 +345,14 @@ public class Codewars {
         }
         return '\u0000';
     }
-    
+
     /*
     Beginner Series #3 Sum of Numbers
      */
     public int GetSum(int a, int b) {
         return IntStream
-            .rangeClosed(Math.min(a, b), Math.max(a, b))
-            .sum();
+                .rangeClosed(Math.min(a, b), Math.max(a, b))
+                .sum();
     }
 
 }
