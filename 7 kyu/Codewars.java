@@ -100,9 +100,9 @@ public class Codewars {
      */
     public long numberOfDivisors(int n) {
         return Long.signum(n) + LongStream
-                                    .rangeClosed(1, n / 2)
-                                    .filter(i -> n % i == 0)
-                                    .count();
+                .rangeClosed(1, n / 2)
+                .filter(i -> n % i == 0)
+                .count();
     }
 
     /*
@@ -197,8 +197,8 @@ public class Codewars {
         int count = 0;
         for (int i = 0; i <= n; i++) {
             count += String.valueOf(i * i).codePoints()
-                        .filter(ch -> ch == Character.forDigit(d, 10))
-                        .count();
+                    .filter(ch -> ch == Character.forDigit(d, 10))
+                    .count();
         }
         return count;
     }
@@ -238,10 +238,10 @@ public class Codewars {
      */
     public static String highAndLow(String numbers) {
         List<Integer> list = Arrays.stream(numbers.split(" "))
-                                .mapToInt(Integer::parseInt)
-                                .boxed()
-                                .sorted(Comparator.reverseOrder())
-                                .collect(Collectors.toList());
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
         return String.format("%d %d", list.get(0), list.get(list.size() - 1));
     }
 
@@ -250,8 +250,8 @@ public class Codewars {
      */
     public static int getCount(String str) {
         return (int) str.codePoints()
-                        .filter(i -> List.of('a', 'e', 'i', 'o', 'u').contains((char) i))
-                        .count();
+                .filter(i -> List.of('a', 'e', 'i', 'o', 'u').contains((char) i))
+                .count();
     }
 
     /*
