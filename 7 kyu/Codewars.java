@@ -311,4 +311,34 @@ public class Codewars {
                 .collect(Collectors.joining(" "));
     }
 
+    /*
+    Exes and Ohs
+     */
+    public static boolean getXO(String str) {
+        return str.replaceAll("[oO]", "").length() == str.replaceAll("[xX]", "").length();
+    }
+
+    /*
+    Complementary DNA
+     */
+    public static String makeComplement(String dna) {
+        return dna.codePoints()
+                .mapToObj(i -> String.valueOf(getComplement(i)))
+                .collect(Collectors.joining());
+    }
+
+    public static char getComplement(int symbol) {
+        switch (symbol) {
+            case 'A':
+                return 'T';
+            case 'T':
+                return 'A';
+            case 'C':
+                return 'G';
+            case 'G':
+                return 'C';
+        }
+        return '\u0000';
+    }
+
 }
