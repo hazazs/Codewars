@@ -354,5 +354,12 @@ public class Codewars {
                 .rangeClosed(Math.min(a, b), Math.max(a, b))
                 .sum();
     }
+    
+    /*
+    Credit Card Mask
+     */
+    public static String maskify(String str) {
+        return str.length() > 4 ? "#".repeat(str.length() - 4) + str.substring(str.length() - 4) : str;
+    }
 
 }
