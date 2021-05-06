@@ -354,7 +354,7 @@ public class Codewars {
                 .rangeClosed(Math.min(a, b), Math.max(a, b))
                 .sum();
     }
-    
+
     /*
     Credit Card Mask
      */
