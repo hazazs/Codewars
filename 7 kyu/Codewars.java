@@ -362,4 +362,16 @@ public class Codewars {
         return str.length() > 4 ? "#".repeat(str.length() - 4) + str.substring(str.length() - 4) : str;
     }
 
+    /*
+    Growth of a Population
+     */
+    public static int nbYear(int p0, double percent, int aug, int p) {
+        int numberOfYears = 0;
+        while (p0 < p) {
+            p0 = (int) (p0 * (1 + percent / 100)) + aug;
+            numberOfYears++;
+        }
+        return numberOfYears++;
+    }
+
 }
