@@ -392,4 +392,11 @@ public class Codewars {
         return (int) Math.pow(n, 3);
     }
 
+    /*
+    Regex validate PIN code
+     */
+    public static boolean validatePin(String pin) {
+        return pin.matches("[0-9]{4}|[0-9]{6}");
+    }
+
 }
