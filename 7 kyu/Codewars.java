@@ -374,4 +374,22 @@ public class Codewars {
         return numberOfYears++;
     }
 
+    /*
+    Two to One
+     */
+    public static String longest(String s1, String s2) {
+        return s1.concat(s2).codePoints()
+                .distinct()
+                .sorted()
+                .mapToObj(Character::toString)
+                .collect(Collectors.joining());
+    }
+
+    /*
+    Sum of odd numbers
+     */
+    public static int rowSumOddNumbers(int n) {
+        return (int) Math.pow(n, 3);
+    }
+
 }
