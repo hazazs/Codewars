@@ -399,4 +399,11 @@ public class Codewars {
         return pin.matches("[0-9]{4}|[0-9]{6}");
     }
 
+    /*
+    Printer Errors
+     */
+    public static String printerError(String s) {
+        return String.format("%d/%d", s.replaceAll("[a-m]", "").length(), s.length());
+    }
+
 }
