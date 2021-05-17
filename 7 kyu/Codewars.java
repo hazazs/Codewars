@@ -406,4 +406,11 @@ public class Codewars {
         return String.format("%d/%d", s.replaceAll("[a-m]", "").length(), s.length());
     }
 
+    /*
+    Find the next perfect square!
+     */
+    public static long findNextSquare(long sq) {
+        return Math.sqrt(sq) == (int) Math.sqrt(sq) ? (long) Math.pow(Math.sqrt(sq) + 1, 2) : -1;
+    }
+
 }
