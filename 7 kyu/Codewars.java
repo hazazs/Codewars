@@ -413,4 +413,20 @@ public class Codewars {
         return Math.sqrt(sq) == (int) Math.sqrt(sq) ? (long) Math.pow(Math.sqrt(sq) + 1, 2) : -1;
     }
 
+    /*
+    Is this a triangle?
+     */
+    public static boolean isTriangle(int a, int b, int c) {
+        return a + b > c && a + c > b && b + c > a;
+    }
+
+    /*
+    Number of People in the Bus
+     */
+    public static int countPassengers(ArrayList<int[]> stops) {
+        return stops.stream()
+                .mapToInt(i -> i[0] - i[1])
+                .sum();
+    }
+
 }
