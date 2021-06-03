@@ -438,5 +438,7 @@ public class Codewars {
                 .sum();
         return String.format("%.2f", sum);
     }
+    
+    //siker
 
 }
