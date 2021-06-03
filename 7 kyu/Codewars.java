@@ -429,4 +429,14 @@ public class Codewars {
                 .sum();
     }
 
+    /*
+    Sum of the first nth term of Series
+     */
+    public static String seriesSum(int n) {
+        double sum = IntStream.range(0, n)
+                .mapToDouble(i -> 1.0 / (1 + i * 3))
+                .sum();
+        return String.format("%.2f", sum);
+    }
+
 }
