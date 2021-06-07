@@ -14,429 +14,385 @@ import java.util.stream.LongStream;
 
 public class Codewars {
 
-    /*
-    An English Twist on a Japanese Classic
-     */
-    public static List<String> theGame(List<String> words) {
-        int i = 0;
-        while (i < words.size() && isValidWord(words, i)) {
-            i++;
-        }
-        return words.subList(0, i);
-    }
+	/*
+	 * An English Twist on a Japanese Classic
+	 */
+	public static List<String> theGame(List<String> words) {
+		int i = 0;
+		while (i < words.size() && isValidWord(words, i)) {
+			i++;
+		}
+		return words.subList(0, i);
+	}
 
-    public static boolean isValidWord(List<String> w, int i) {
-        return !w.get(i).isEmpty() && (i == 0 || w.get(i - 1).endsWith(String.valueOf(w.get(i).charAt(0))));
-    }
+	public static boolean isValidWord(List<String> w, int i) {
+		return !w.get(i).isEmpty() && (i == 0 || w.get(i - 1).endsWith(String.valueOf(w.get(i).charAt(0))));
+	}
 
-    /*
-    Descending Order
-     */
-    public static int sortDesc(final int num) {
-        int tmp = num;
-        List<Integer> list = new ArrayList<>();
-        while (tmp != 0) {
-            list.add(tmp % 10);
-            tmp /= 10;
-        }
-        list.sort((num1, num2) -> Integer.compare(num1, num2));
-        int max = 0;
-        for (int i = 0; i < list.size(); i++) {
-            max += list.get(i) * Math.pow(10, i);
-        }
-        return max;
-    }
+	/*
+	 * Descending Order
+	 */
+	public static int sortDesc(final int num) {
+		int tmp = num;
+		List<Integer> list = new ArrayList<>();
+		while (tmp != 0) {
+			list.add(tmp % 10);
+			tmp /= 10;
+		}
+		list.sort((num1, num2) -> Integer.compare(num1, num2));
+		int max = 0;
+		for (int i = 0; i < list.size(); i++) {
+			max += list.get(i) * Math.pow(10, i);
+		}
+		return max;
+	}
 
-    /*
-    Square Every Digit
-     */
-    public int squareDigits(int n) {
-        StringBuilder builder = new StringBuilder(String.valueOf(n).length());
-        while (n != 0) {
-            builder.insert(0, Math.round(Math.pow(n % 10, 2)));
-            n /= 10;
-        }
-        return Integer.parseInt(builder.toString());
-    }
+	/*
+	 * Square Every Digit
+	 */
+	public int squareDigits(int n) {
+		StringBuilder builder = new StringBuilder(String.valueOf(n).length());
+		while (n != 0) {
+			builder.insert(0, Math.round(Math.pow(n % 10, 2)));
+			n /= 10;
+		}
+		return Integer.parseInt(builder.toString());
+	}
 
-    /*
-    Ones and Zeros
-     */
-    public static int ConvertBinaryArrayToInt(List<Integer> binary) {
-        return IntStream
-                .range(0, binary.size())
-                .map(i -> binary.get(i) * (int) Math.pow(2, binary.size() - i - 1))
-                .sum();
-    }
+	/*
+	 * Ones and Zeros
+	 */
+	public static int ConvertBinaryArrayToInt(List<Integer> binary) {
+		return IntStream.range(0, binary.size()).map(i -> binary.get(i) * (int) Math.pow(2, binary.size() - i - 1))
+				.sum();
+	}
 
-    /*
-    Easy Line
-     */
-    public static BigInteger easyLine(int n) {
-        return IntStream
-                .range(0, n + 1)
-                .mapToObj(k -> nChooseK(n, k).pow(2))
-                .reduce(BigInteger::add)
-                .get();
-    }
+	/*
+	 * Easy Line
+	 */
+	public static BigInteger easyLine(int n) {
+		return IntStream.range(0, n + 1).mapToObj(k -> nChooseK(n, k).pow(2)).reduce(BigInteger::add).get();
+	}
 
-    public static BigInteger nChooseK(int n, int k) {
-        return fact(n).divide(fact(k).multiply(fact(n - k)));
-    }
+	public static BigInteger nChooseK(int n, int k) {
+		return fact(n).divide(fact(k).multiply(fact(n - k)));
+	}
 
-    public static BigInteger fact(int n) {
-        return n < 2 ? BigInteger.ONE : BigInteger.valueOf(n).multiply(fact(n - 1));
-    }
+	public static BigInteger fact(int n) {
+		return n < 2 ? BigInteger.ONE : BigInteger.valueOf(n).multiply(fact(n - 1));
+	}
 
-    /*
-    Reverse a Number
-     */
-    public static int reverse(int number) {
-        return Integer.signum(number) * Integer.parseInt(new StringBuilder(0).append(Math.abs(number)).reverse().toString());
-    }
+	/*
+	 * Reverse a Number
+	 */
+	public static int reverse(int number) {
+		return Integer.signum(number)
+				* Integer.parseInt(new StringBuilder(0).append(Math.abs(number)).reverse().toString());
+	}
 
-    /*
-    Count the divisors of a number
-     */
-    public long numberOfDivisors(int n) {
-        return Long.signum(n) + LongStream
-                .rangeClosed(1, n / 2)
-                .filter(i -> n % i == 0)
-                .count();
-    }
+	/*
+	 * Count the divisors of a number
+	 */
+	public long numberOfDivisors(int n) {
+		return Long.signum(n) + LongStream.rangeClosed(1, n / 2).filter(i -> n % i == 0).count();
+	}
 
-    /*
-    Bumps in the Road
-     */
-    public static String bumps(final String road) {
-        return road.chars().filter(i -> i == 110).count() > 15 ? "Car Dead" : "Woohoo!";
-    }
+	/*
+	 * Bumps in the Road
+	 */
+	public static String bumps(final String road) {
+		return road.chars().filter(i -> i == 110).count() > 15 ? "Car Dead" : "Woohoo!";
+	}
 
-    /*
-    Disemvowel Trolls
-     */
-    public static String disemvowel(String str) {
-        return str.codePoints()
-                .filter(i -> !Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U').contains((char) i))
-                .mapToObj(i -> String.valueOf((char) i))
-                .collect(Collectors.joining());
-    }
+	/*
+	 * Disemvowel Trolls
+	 */
+	public static String disemvowel(String str) {
+		return str.codePoints()
+				.filter(i -> !Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U').contains((char) i))
+				.mapToObj(i -> String.valueOf((char) i)).collect(Collectors.joining());
+	}
 
-    /*
-    Speed Control
-     */
-    public static int gps(int s, double[] x) {
-        return IntStream
-                .range(0, x.length - 1)
-                .map(i -> (int) (3600 * (x[i + 1] - x[i]) / s))
-                .max()
-                .orElse(0);
-    }
+	/*
+	 * Speed Control
+	 */
+	public static int gps(int s, double[] x) {
+		return IntStream.range(0, x.length - 1).map(i -> (int) (3600 * (x[i + 1] - x[i]) / s)).max().orElse(0);
+	}
 
-    /*
-    Switcheroo
-     */
-    public static String switcheroo(String x) {
-        return x.codePoints()
-                .mapToObj(i -> i == 'a' ? "b" : (i == 'b' ? "a" : "c"))
-                .collect(Collectors.joining());
-    }
+	/*
+	 * Switcheroo
+	 */
+	public static String switcheroo(String x) {
+		return x.codePoints().mapToObj(i -> i == 'a' ? "b" : (i == 'b' ? "a" : "c")).collect(Collectors.joining());
+	}
 
-    /*
-    Harvest Festival
-     */
-    public static String plant(char seed, int water, int fert, int temp) {
-        StringBuilder plant = new StringBuilder(2);
-        for (int cluster = 0; cluster < water; cluster++) {
-            for (int stem = 0; stem < water; stem++) {
-                plant.append("-");
-            }
-            if (temp >= 20 && temp <= 30) {
-                for (int flower = 0; flower < fert; flower++) {
-                    plant.append(seed);
-                }
-            }
-        }
-        return temp < 20 || temp > 30 ? plant.append(seed).toString() : plant.toString();
-    }
+	/*
+	 * Harvest Festival
+	 */
+	public static String plant(char seed, int water, int fert, int temp) {
+		StringBuilder plant = new StringBuilder(2);
+		for (int cluster = 0; cluster < water; cluster++) {
+			for (int stem = 0; stem < water; stem++) {
+				plant.append("-");
+			}
+			if (temp >= 20 && temp <= 30) {
+				for (int flower = 0; flower < fert; flower++) {
+					plant.append(seed);
+				}
+			}
+		}
+		return temp < 20 || temp > 30 ? plant.append(seed).toString() : plant.toString();
+	}
 
-    /*
-    All Star Code Challenge #22
-     */
-    public static String toTime(int seconds) {
-        int hours = seconds / 3600;
-        int minutes = (seconds - hours * 3600) / 60;
-        return hours + " hour(s) and " + minutes + " minute(s)";
-    }
+	/*
+	 * All Star Code Challenge #22
+	 */
+	public static String toTime(int seconds) {
+		int hours = seconds / 3600;
+		int minutes = (seconds - hours * 3600) / 60;
+		return hours + " hour(s) and " + minutes + " minute(s)";
+	}
 
-    /*
-    Small enough? - Beginner
-     */
-    public static boolean smallEnough(int[] a, int limit) {
-        return IntStream.of(a).allMatch(i -> i <= limit);
-    }
+	/*
+	 * Small enough? - Beginner
+	 */
+	public static boolean smallEnough(int[] a, int limit) {
+		return IntStream.of(a).allMatch(i -> i <= limit);
+	}
 
-    /*
-    Robinson Crusoe
-     */
-    public static double[] crusoe(int n, double d, double ang, double distmult, double angmult) {
-        double[] coor = new double[2];
-        for (int i = 0; i < n; i++) {
-            coor[0] += d * Math.cos(Math.toRadians(ang));
-            coor[1] += d * Math.sin(Math.toRadians(ang));
-            d *= distmult;
-            ang *= angmult;
-        }
-        return coor;
-    }
+	/*
+	 * Robinson Crusoe
+	 */
+	public static double[] crusoe(int n, double d, double ang, double distmult, double angmult) {
+		double[] coor = new double[2];
+		for (int i = 0; i < n; i++) {
+			coor[0] += d * Math.cos(Math.toRadians(ang));
+			coor[1] += d * Math.sin(Math.toRadians(ang));
+			d *= distmult;
+			ang *= angmult;
+		}
+		return coor;
+	}
 
-    /*
-    Count the Digit
-     */
-    public static int nbDig(int n, int d) {
-        int count = 0;
-        for (int i = 0; i <= n; i++) {
-            count += String.valueOf(i * i).codePoints()
-                    .filter(ch -> ch == Character.forDigit(d, 10))
-                    .count();
-        }
-        return count;
-    }
+	/*
+	 * Count the Digit
+	 */
+	public static int nbDig(int n, int d) {
+		int count = 0;
+		for (int i = 0; i <= n; i++) {
+			count += String.valueOf(i * i).codePoints().filter(ch -> ch == Character.forDigit(d, 10)).count();
+		}
+		return count;
+	}
 
-    /*
-    Mumbling
-     */
-    public static String accum(String s) {
-        return IntStream
-                .range(0, s.length())
-                .mapToObj(i -> s.substring(i, i + 1).repeat(i + 1))
-                .map(str -> str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase())
-                .collect(Collectors.joining("-"));
-    }
+	/*
+	 * Mumbling
+	 */
+	public static String accum(String s) {
+		return IntStream.range(0, s.length()).mapToObj(i -> s.substring(i, i + 1).repeat(i + 1))
+				.map(str -> str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase())
+				.collect(Collectors.joining("-"));
+	}
 
-    /*
-    Moves in squared strings (I)
-     */
-    public static String vertMirror(String strng) {
-        return Arrays.stream(strng.split("\n"))
-                .map(str -> new StringBuilder(str).reverse().toString())
-                .collect(Collectors.joining("\n"));
-    }
+	/*
+	 * Moves in squared strings (I)
+	 */
+	public static String vertMirror(String strng) {
+		return Arrays.stream(strng.split("\n")).map(str -> new StringBuilder(str).reverse().toString())
+				.collect(Collectors.joining("\n"));
+	}
 
-    public static String horMirror(String strng) {
-        return Arrays.stream(strng.split("\n"))
-                .sorted((str1, str2) -> -1)
-                .collect(Collectors.joining("\n"));
-    }
+	public static String horMirror(String strng) {
+		return Arrays.stream(strng.split("\n")).sorted((str1, str2) -> -1).collect(Collectors.joining("\n"));
+	}
 
-    public static String oper(UnaryOperator<String> operator, String s) {
-        return operator.apply(s);
-    }
+	public static String oper(UnaryOperator<String> operator, String s) {
+		return operator.apply(s);
+	}
 
-    /*
-    Highest and Lowest
-     */
-    public static String highAndLow(String numbers) {
-        List<Integer> list = Arrays.stream(numbers.split(" "))
-                .mapToInt(Integer::parseInt)
-                .boxed()
-                .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
-        return String.format("%d %d", list.get(0), list.get(list.size() - 1));
-    }
+	/*
+	 * Highest and Lowest
+	 */
+	public static String highAndLow(String numbers) {
+		List<Integer> list = Arrays.stream(numbers.split(" ")).mapToInt(Integer::parseInt).boxed()
+				.sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+		return String.format("%d %d", list.get(0), list.get(list.size() - 1));
+	}
 
-    /*
-    Vowel Count
-     */
-    public static int getCount(String str) {
-        return (int) str.codePoints()
-                .filter(i -> List.of('a', 'e', 'i', 'o', 'u').contains((char) i))
-                .count();
-    }
+	/*
+	 * Vowel Count
+	 */
+	public static int getCount(String str) {
+		return (int) str.codePoints().filter(i -> List.of('a', 'e', 'i', 'o', 'u').contains((char) i)).count();
+	}
 
-    /*
-    Isograms
-     */
-    public static boolean isIsogram(String str) {
-        return str.toLowerCase().codePoints()
-                .collect(HashSet::new, Set::add, Set::addAll)
-                .size() == str.length();
-    }
+	/*
+	 * Isograms
+	 */
+	public static boolean isIsogram(String str) {
+		return str.toLowerCase().codePoints().collect(HashSet::new, Set::add, Set::addAll).size() == str.length();
+	}
 
-    /*
-    Map over a list of lists
-     */
-    public static <T, R> R[][] gridMap(Function<T, R> fn, T[][] list) {
-        R[][] R = (R[][]) Array.newInstance(list.getClass().getComponentType(), list.length);
-        for (int i = 0; i < list.length; i++) {
-            R[i] = (R[]) Array.newInstance(list[i].getClass().getComponentType(), list[i].length);
-            for (int j = 0; j < list[i].length; j++) {
-                R[i][j] = fn.apply(list[i][j]);
-            }
-        }
-        return R;
-    }
+	/*
+	 * Map over a list of lists
+	 */
+	public static <T, R> R[][] gridMap(Function<T, R> fn, T[][] list) {
+		R[][] R = (R[][]) Array.newInstance(list.getClass().getComponentType(), list.length);
+		for (int i = 0; i < list.length; i++) {
+			R[i] = (R[]) Array.newInstance(list[i].getClass().getComponentType(), list[i].length);
+			for (int j = 0; j < list[i].length; j++) {
+				R[i][j] = fn.apply(list[i][j]);
+			}
+		}
+		return R;
+	}
 
-    /*
-    Get the Middle Character
-     */
-    public static String getMiddle(String word) {
-        if (word.length() % 2 == 0) {
-            return word.substring(word.length() / 2 - 1, word.length() / 2 + 1);
-        }
-        return String.valueOf(word.charAt(word.length() / 2));
-    }
+	/*
+	 * Get the Middle Character
+	 */
+	public static String getMiddle(String word) {
+		if (word.length() % 2 == 0) {
+			return word.substring(word.length() / 2 - 1, word.length() / 2 + 1);
+		}
+		return String.valueOf(word.charAt(word.length() / 2));
+	}
 
-    /*
-    You're a square!
-     */
-    public static boolean isSquare(int n) {
-        return Math.round(Math.sqrt(n)) == Math.sqrt(n);
-    }
+	/*
+	 * You're a square!
+	 */
+	public static boolean isSquare(int n) {
+		return Math.round(Math.sqrt(n)) == Math.sqrt(n);
+	}
 
-    /*
-    Shortest Word
-     */
-    public static int findShort(String s) {
-        return Arrays.stream(s.split(" "))
-                .min((s1, s2) -> Integer.compare(s1.length(), s2.length()))
-                .get()
-                .length();
-    }
+	/*
+	 * Shortest Word
+	 */
+	public static int findShort(String s) {
+		return Arrays.stream(s.split(" ")).min((s1, s2) -> Integer.compare(s1.length(), s2.length())).get().length();
+	}
 
-    /*
-    Jaden Casing Strings
-     */
-    public String toJadenCase(String phrase) {
-        if (phrase == null || phrase.isEmpty()) {
-            return null;
-        }
-        return Arrays.stream(phrase.split(" "))
-                .map(s -> s.substring(0, 1).toUpperCase().concat(s.substring(1)))
-                .collect(Collectors.joining(" "));
-    }
+	/*
+	 * Jaden Casing Strings
+	 */
+	public String toJadenCase(String phrase) {
+		if (phrase == null || phrase.isEmpty()) {
+			return null;
+		}
+		return Arrays.stream(phrase.split(" ")).map(s -> s.substring(0, 1).toUpperCase().concat(s.substring(1)))
+				.collect(Collectors.joining(" "));
+	}
 
-    /*
-    Exes and Ohs
-     */
-    public static boolean getXO(String str) {
-        return str.replaceAll("[oO]", "").length() == str.replaceAll("[xX]", "").length();
-    }
+	/*
+	 * Exes and Ohs
+	 */
+	public static boolean getXO(String str) {
+		return str.replaceAll("[oO]", "").length() == str.replaceAll("[xX]", "").length();
+	}
 
-    /*
-    Complementary DNA
-     */
-    public static String makeComplement(String dna) {
-        return dna.codePoints()
-                .mapToObj(i -> String.valueOf(getComplement(i)))
-                .collect(Collectors.joining());
-    }
+	/*
+	 * Complementary DNA
+	 */
+	public static String makeComplement(String dna) {
+		return dna.codePoints().mapToObj(i -> String.valueOf(getComplement(i))).collect(Collectors.joining());
+	}
 
-    public static char getComplement(int symbol) {
-        switch (symbol) {
-            case 'A':
-                return 'T';
-            case 'T':
-                return 'A';
-            case 'C':
-                return 'G';
-            case 'G':
-                return 'C';
-        }
-        return '\u0000';
-    }
+	public static char getComplement(int symbol) {
+		switch (symbol) {
+		case 'A':
+			return 'T';
+		case 'T':
+			return 'A';
+		case 'C':
+			return 'G';
+		case 'G':
+			return 'C';
+		}
+		return '\u0000';
+	}
 
-    /*
-    Beginner Series #3 Sum of Numbers
-     */
-    public int GetSum(int a, int b) {
-        return IntStream
-                .rangeClosed(Math.min(a, b), Math.max(a, b))
-                .sum();
-    }
+	/*
+	 * Beginner Series #3 Sum of Numbers
+	 */
+	public int GetSum(int a, int b) {
+		return IntStream.rangeClosed(Math.min(a, b), Math.max(a, b)).sum();
+	}
 
-    /*
-    Credit Card Mask
-     */
-    public static String maskify(String str) {
-        return str.length() > 4 ? "#".repeat(str.length() - 4) + str.substring(str.length() - 4) : str;
-    }
+	/*
+	 * Credit Card Mask
+	 */
+	public static String maskify(String str) {
+		return str.length() > 4 ? "#".repeat(str.length() - 4) + str.substring(str.length() - 4) : str;
+	}
 
-    /*
-    Growth of a Population
-     */
-    public static int nbYear(int p0, double percent, int aug, int p) {
-        int numberOfYears = 0;
-        while (p0 < p) {
-            p0 = (int) (p0 * (1 + percent / 100)) + aug;
-            numberOfYears++;
-        }
-        return numberOfYears++;
-    }
+	/*
+	 * Growth of a Population
+	 */
+	public static int nbYear(int p0, double percent, int aug, int p) {
+		int numberOfYears = 0;
+		while (p0 < p) {
+			p0 = (int) (p0 * (1 + percent / 100)) + aug;
+			numberOfYears++;
+		}
+		return numberOfYears++;
+	}
 
-    /*
-    Two to One
-     */
-    public static String longest(String s1, String s2) {
-        return s1.concat(s2).codePoints()
-                .distinct()
-                .sorted()
-                .mapToObj(Character::toString)
-                .collect(Collectors.joining());
-    }
+	/*
+	 * Two to One
+	 */
+	public static String longest(String s1, String s2) {
+		return s1.concat(s2).codePoints().distinct().sorted().mapToObj(Character::toString)
+				.collect(Collectors.joining());
+	}
 
-    /*
-    Sum of odd numbers
-     */
-    public static int rowSumOddNumbers(int n) {
-        return (int) Math.pow(n, 3);
-    }
+	/*
+	 * Sum of odd numbers
+	 */
+	public static int rowSumOddNumbers(int n) {
+		return (int) Math.pow(n, 3);
+	}
 
-    /*
-    Regex validate PIN code
-     */
-    public static boolean validatePin(String pin) {
-        return pin.matches("[0-9]{4}|[0-9]{6}");
-    }
+	/*
+	 * Regex validate PIN code
+	 */
+	public static boolean validatePin(String pin) {
+		return pin.matches("[0-9]{4}|[0-9]{6}");
+	}
 
-    /*
-    Printer Errors
-     */
-    public static String printerError(String s) {
-        return String.format("%d/%d", s.replaceAll("[a-m]", "").length(), s.length());
-    }
+	/*
+	 * Printer Errors
+	 */
+	public static String printerError(String s) {
+		return String.format("%d/%d", s.replaceAll("[a-m]", "").length(), s.length());
+	}
 
-    /*
-    Find the next perfect square!
-     */
-    public static long findNextSquare(long sq) {
-        return Math.sqrt(sq) == (int) Math.sqrt(sq) ? (long) Math.pow(Math.sqrt(sq) + 1, 2) : -1;
-    }
+	/*
+	 * Find the next perfect square!
+	 */
+	public static long findNextSquare(long sq) {
+		return Math.sqrt(sq) == (int) Math.sqrt(sq) ? (long) Math.pow(Math.sqrt(sq) + 1, 2) : -1;
+	}
 
-    /*
-    Is this a triangle?
-     */
-    public static boolean isTriangle(int a, int b, int c) {
-        return a + b > c && a + c > b && b + c > a;
-    }
+	/*
+	 * Is this a triangle?
+	 */
+	public static boolean isTriangle(int a, int b, int c) {
+		return a + b > c && a + c > b && b + c > a;
+	}
 
-    /*
-    Number of People in the Bus
-     */
-    public static int countPassengers(ArrayList<int[]> stops) {
-        return stops.stream()
-                .mapToInt(i -> i[0] - i[1])
-                .sum();
-    }
+	/*
+	 * Number of People in the Bus
+	 */
+	public static int countPassengers(ArrayList<int[]> stops) {
+		return stops.stream().mapToInt(i -> i[0] - i[1]).sum();
+	}
 
-    /*
-    Sum of the first nth term of Series
-     */
-    public static String seriesSum(int n) {
-        double sum = IntStream.range(0, n)
-                .mapToDouble(i -> 1.0 / (1 + i * 3))
-                .sum();
-        return String.format("%.2f", sum);
-    }
+	/*
+	 * Sum of the first nth term of Series
+	 */
+	public static String seriesSum(int n) {
+		double sum = IntStream.range(0, n).mapToDouble(i -> 1.0 / (1 + i * 3)).sum();
+		return String.format("%.2f", sum);
+	}
 
 }
